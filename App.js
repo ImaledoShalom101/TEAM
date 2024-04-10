@@ -6,10 +6,10 @@ import { View, StyleSheet } from "react-native";
 import { Provider as PaperProvider, MD3DarkTheme, useTheme } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-//import MainDrawer from "./src/utilities/components/MainDrawer";
-//import { BlurView } from 'expo-blur';
-//import SignUp from "./src/screens/SignUp";
-//import SignIn from "./src/screens/SignIn";
+import MainDrawer from "./src/utilities/components/MainDrawer";
+import { BlurView } from 'expo-blur';
+import SignUp from "./src/screens/SignUp";
+import SignIn from "./src/screens/SignIn";
 
 
 const Stack = createStackNavigator();

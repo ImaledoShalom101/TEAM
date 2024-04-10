@@ -36,15 +36,15 @@ const data = {
   admin: true,
 }
 
-
 const DATA = [
-  // newTask IS TRUE UNTIL TIME HAS ELAPSED.
+  // newTask IS TRUE UNTIL TIME HAS ELAPSED OR TASK HAS BEEN DONE.
+  // WHENEVER newTask BECOMES false, TIME COUNT STOPS!
   // undone IS ONLY TRUE IF TIME HAS ELAPSED AND
   // ACTIVITY WAS UNDONE.
   {
-    taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    taskDescription: `Good day. This work requires you to stay at the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
+    dateAndTimeCreated: "2024-04-10T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-04-10T23:59:00.000Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
@@ -56,33 +56,33 @@ const DATA = [
   },
   {
     taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    dateAndTimeCreated: "2024-04-10T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-04-10T17:50:00.986Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Telegram", `https://tm.am/channel/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
     draft: "",
-    newTask: false,
+    newTask: true,
     undone: false,
     taskIndex: 4
   },
   {
-    taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    taskDescription: `This duty is assigned to you because you were, last year, needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
+    dateAndTimeCreated: "2024-04-10T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-04-10T18:00:40.000Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Telegram", `https://tm.am/channel/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
     draft: "",
     impacts: 5,
-    newTask: false,
+    newTask: true,
     undone: false,
     taskIndex: 4
   },
   {
-    taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    taskDescription: `Dave You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
+    dateAndTimeCreated: "2024-03-28T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-04-10T19:03:15.000Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Telegram", `https://tm.am/channel/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
@@ -94,8 +94,8 @@ const DATA = [
   },
   {
     taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    dateAndTimeCreated: "2024-03-28T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-03-28T22:02:39.986Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Telegram", `https://tm.am/channel/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
@@ -107,8 +107,8 @@ const DATA = [
   },
   {
     taskDescription: `You are needed to modify the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateDeadline: `29/02/2024`,
-    timeDeadline: `06:52 PM`,
+    dateAndTimeCreated: "2024-03-28T22:02:39.986Z",
+    dateAndTimeDeadline: "2024-03-28T22:02:39.986Z",
     members: ["Imaledo David Shalom", "Ora Peace Flora"],
     fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
     url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Telegram", `https://tm.am/channel/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
@@ -119,7 +119,6 @@ const DATA = [
     taskIndex: 1
   },
 ];
-
 const acceptableFileTypes = {
   image: {
     name: "image",
@@ -499,6 +498,7 @@ const Tasks = () => {
           renderItem={({ item, index }) => <TaskComp
             {...item}
             index={index}
+            participated={item.newTask ? "ongoing" : item.undone ? "no" : "yes"}
             viewFullTask={() => navigation.navigate("task submission", { taskIndex: index })}
           />}
           showsVerticalScrollIndicator={false}
