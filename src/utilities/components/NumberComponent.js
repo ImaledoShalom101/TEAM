@@ -12,16 +12,19 @@ import {
 
 
 
-const NumberComponent = ({ onPress, textNumber, borderWidth, borderColor }) => {
+const NumberComponent = ({ textVariant, onPress, textValue, borderWidth, borderColor, height, marginHorizontal }) => {
   //const [selectedNumber, setSelectedNumber] = useState(0);
   //const selectedNumber = useRef(0);
 
-  //const NumberComponent = ({ textNumber }) => (
-  return (<Pressable onPress={onPress} style={{ borderWidth: borderWidth, borderColor: borderColor, backgroundColor: "#c3c3c3", height: 40, borderRadius: 15, alignItems: "center", justifyContent: "center" }}>
-    <Text variant="titleLarge">
-      {textNumber}
-    </Text>
-  </Pressable>
+  //const NumberComponent = ({ textValue }) => (
+  return (
+    <Pressable
+      onPress={onPress}
+      style={{ borderWidth: borderWidth(), borderColor: borderColor(), backgroundColor: "#e7e7e7", height: height(), marginHorizontal: marginHorizontal(), borderRadius: 15, alignItems: "center", justifyContent: "center" }}>
+      <Text variant={textVariant}>
+        {textValue}
+      </Text>
+    </Pressable>
   )
   //return (
 

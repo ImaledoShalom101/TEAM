@@ -119,6 +119,68 @@ const DATA = [
     taskIndex: 1
   },
 ];
+const members = [
+  {
+    fullName: "Imaledo Sharon Tolulope",
+    username: "goingOverGG",
+    numberOfBadges: "3",
+    impacts: "1",
+    emailAddress: "sharontolulope@gmail.com",
+    phoneNumber: "08141663809",
+    lastOnline: "previous week",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [1, require("../../assets/achievements/badge-boss.png")],
+      [1, require("../../assets/achievements/poll-proclaimer.png")],
+      [1, require("../../assets/achievements/attendance-ace.png")],
+    ]
+  },
+  {
+    fullName: "Imaledo David Shalom",
+    username: "shalom#01",
+    numberOfBadges: "8",
+    impacts: "25",
+    emailAddress: "shalomimaledo@gmail.com",
+    phoneNumber: "09137287950",
+    lastOnline: null,
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [4, require("../../assets/achievements/badge-boss.png")],
+      [3, require("../../assets/achievements/poll-proclaimer.png")],
+      [1, require("../../assets/achievements/attendance-ace.png")],
+    ]
+  },
+  {
+    fullName: "Ora Peace Flora",
+    username: "omoInTheMaking252",
+    numberOfBadges: "4",
+    impacts: "9",
+    emailAddress: "augmentedone@zohomail.com",
+    phoneNumber: "08028299888",
+    lastOnline: "yesterday",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [2, require("../../assets/achievements/all-star.png")],
+      [1, require("../../assets/achievements/knowledge-keeper.png")],
+      [1, require("../../assets/achievements/project-pro.png")],
+    ]
+  },
+  {
+    fullName: "Dunsin Divine Favour",
+    username: "divineFavour239",
+    numberOfBadges: "15",
+    impacts: "37",
+    emailAddress: "divinefavourohele@gmail.com",
+    phoneNumber: "08176268186",
+    lastOnline: "today",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [7, require("../../assets/achievements/impact-awarded.png")],
+      [5, require("../../assets/achievements/signin-pioneer.png")],
+      [3, require("../../assets/achievements/survey-sage.png")],
+    ]
+  },
+]
 const acceptableFileTypes = {
   image: {
     name: "image",
@@ -142,6 +204,11 @@ const acceptableFileTypes = {
   },
 }
 
+const membersExtractedForm = members.map((data) => {
+  const { fullName } = data;
+  return fullName;
+})
+
 const Tasks = () => {
   const theme = useTheme();
 
@@ -150,7 +217,7 @@ const Tasks = () => {
     const [dateDeadlineText, setDateDeadlineText] = useState(dayjs());
     const [shownDateDeadline, setShownDateDeadline] = useState(dateDeadlineText.format("MM-DD"));
     const [timeDeadlineText, setTimeDeadlineText] = useState("");
-    const [numberOfImpacts, setNumberOfImpacts] = useState(0);
+    const [numberOfImpacts, setNumberOfImpacts] = useState(["0"]);
     const [linkOutsideText, setLinkOutsideText] = useState("");
     const [linkText, setLinkText] = useState("");
     const [fileName, setFileName] = useState("");
@@ -160,6 +227,7 @@ const Tasks = () => {
     const [uploadedFiles, setUploadedFiles] = useState(["010c929688612d2fa083c4b3aa0ce105.mp4", "video1.mp4", "snapchat02/10/20.mp4", "clip4.mp4"]);
     const [uploadedLinks, setUploadedLinks] = useState([["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`]]);
     const [taskDescriptionError, setTaskDescriptionError] = useState(false);
+    const [showAssigneeMembersSelector, setShowAssigneeMembersSelector] = useState(false);
     const [assigneeMembersError, setAssigneeMembersError] = useState(false);
     const [dateDeadlineError, setDateDeadlineError] = useState(false);
     const [timeDeadlineError, setTimeDeadlineError] = useState(false);
@@ -266,6 +334,72 @@ const Tasks = () => {
       )
     }
 
+    const SelectionComp = ({ data, mode, pressableOnPress }) => {
+      const ImpactSelectorTextInput = () => {
+        return (
+          <TextInput
+            mode="outlined"
+            placeholder="Type impact amount..."
+            enterKeyHint="done"
+            inputMode="numeric"
+            onSubmitEditing={(value) => {
+              setNumberOfImpacts([value]);
+              setShowImpactNumberSelector(false)
+            }}
+          />
+        )
+      }
+      return (
+        <Portal>
+          <Pressable onPress={pressableOnPress} style={{ backgroundColor: "#80808053", paddingBottom: 100, paddingHorizontal: 7, flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
+            <View style={{ flex: mode == "single" ? .38 : .65, width: "100%" }}>
+              <FlatList
+                data={data}
+                renderItem={(({ item }) => <NumberComponent
+                  textValue={item}
+                  borderWidth={() => {
+                    if (mode == "single") return item == numberOfImpacts[0] ? 2 : .5
+                    else return assigneeMembers.includes(item) ? 2 : .5
+                  }}
+                  borderColor={() => {
+                    if (mode == "single") return item == numberOfImpacts[0] ? theme.colors.primary : "black"
+                    else return assigneeMembers.includes(item) ? theme.colors.primary : "black"
+                  }}
+                  height={() => {
+                    if (mode == "single") return item === numberOfImpacts[0] ? 50 : 40
+                    else return assigneeMembers.includes(item) ? 50 : 40
+                  }}
+                  marginHorizontal={() => {
+                    if (mode == "single") return item === numberOfImpacts[0] ? 0 : 5
+                    else return assigneeMembers.includes(item) ? 0 : 5
+                  }}
+                  textVariant={mode == "single" ? "titleLarge" : "titleMedium"}
+                  onPress={() => {
+                    if (mode == "single") {
+                      setNumberOfImpacts([item]);
+                      setShowImpactNumberSelector(false)
+                    }
+                    else {
+                      let te = [...assigneeMembers];
+                      let compIndex = te.indexOf(item);
+                      if (te.includes(item)) te.splice(compIndex, 1);
+                      else te.push(item)
+                      setAssigneeMembers(te)
+                    }
+                  }}
+                />
+                )}
+                ListFooterComponent={mode == "single" ? <ImpactSelectorTextInput /> : null}
+                showsVerticalScrollIndicator={false}
+                overScrollMode="never"
+                contentContainerStyle={{ rowGap: 5, paddingHorizontal: 7, paddingVertical: 4 }}
+                style={{ width: "100%", backgroundColor: "white", borderRadius: 5 }}
+              />
+            </View>
+          </Pressable>
+        </Portal>
+      )
+    }
 
     return (
       <ScrollView
@@ -358,12 +492,21 @@ const Tasks = () => {
                 compName={`${assigneeMembers.length.toString()} Member${assigneeMembers.length > 1 ? "s" : ""}`}
                 compIndex={0}
               />
-              <Button onPress={addingFile} mode="contained" icon="account" rippleColor="rgba(0,0,0,0)" style={{ borderColor: theme.colors.primary, borderRadius: 10, alignSelf: "flex-end" }}>
-                {fileUnsaved ? "Save" : "Select member(s)"}
+              <Button onPress={() => setShowAssigneeMembersSelector(true)} mode="contained" icon="account" rippleColor="rgba(0,0,0,0)" style={{ borderColor: theme.colors.primary, borderRadius: 10, alignSelf: "flex-end" }}>
+                Select member(s)
               </Button>
             </View>
           </View>
-
+          {
+            showAssigneeMembersSelector ?
+              <SelectionComp
+                data={membersExtractedForm}
+                mode="multiple"
+                pressableOnPress={() => setShowAssigneeMembersSelector(false)}
+              />
+              :
+              null
+          }
 
           <View style={{ marginBottom: 8, rowGap: 10, borderRadius: 10, borderColor: theme.colors.primaryContainer, borderWidth: uploadedFiles.length > 0 && !fileUnsaved ? 1 : 0 }}>
             <Surface elevation={uploadedFiles.length > 0 && !fileUnsaved ? 1 : 0} style={{ padding: 5, borderRadius: 10, rowGap: 5 }}>
@@ -382,7 +525,6 @@ const Tasks = () => {
               {fileUnsaved ? "Save" : "Add file"}
             </Button>
           </View>
-
 
           <View style={{ marginBottom: 8, rowGap: 10, borderRadius: 10, borderColor: theme.colors.primaryContainer, borderWidth: uploadedLinks.length > 0 && !linkUnsaved ? 1 : 0 }}>
             <Surface elevation={uploadedLinks.length > 0 && !linkUnsaved ? 1 : 0} style={{ padding: 5, borderRadius: 10, rowGap: 5 }}>
@@ -442,7 +584,7 @@ const Tasks = () => {
               color="#b362ff"
             />
           </Pressable>
-          {
+          {/*
             showImpactNumberSelector ?
               <Portal>
                 <Pressable onPress={() => setShowImpactNumberSelector(false)} style={{ backgroundColor: "#80808053", paddingBottom: 100, paddingHorizontal: 7, flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
@@ -450,7 +592,7 @@ const Tasks = () => {
                     <FlatList
                       data={Array.from({ length: 100 }, (_, i) => i)}
                       renderItem={(({ item }) => <NumberComponent
-                        textNumber={item}
+                        textValue={item}
                         borderWidth={item === numberOfImpacts ? 1 : .5}
                         borderColor={item === numberOfImpacts ? theme.colors.primary : "black"}
                         onPress={() => { setNumberOfImpacts(item); setShowImpactNumberSelector(false) }}
@@ -464,6 +606,16 @@ const Tasks = () => {
                   </View>
                 </Pressable>
               </Portal>
+              :
+              null
+          */}
+          {
+            showImpactNumberSelector ?
+              <SelectionComp
+                data={Array.from({ length: 31 }, (_, i) => i)}
+                mode="single"
+                pressableOnPress={() => setShowImpactNumberSelector(false)}
+              />
               :
               null
           }
@@ -529,7 +681,7 @@ const Tasks = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="all tasks"
+      initialRouteName="task submittor"
     >
       <Stack.Screen
         name="all tasks"

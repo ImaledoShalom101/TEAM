@@ -9,28 +9,8 @@ import {
   Icon,
   useTheme
 } from "react-native-paper";
-//import { sub, lightFormat, toDate, format, isAfter, differenceInMilliseconds } from "date-fns";
 import { DateTime, Interval, Duration } from "luxon";
 
-const DATA = [
-  // newTask IS TRUE UNTIL TIME HAS ELAPSED OR TASK HAS BEEN DONE.
-  // WHENEVER newTask BECOMES false, TIME COUNT STOPS!
-  // undone IS ONLY TRUE IF TIME HAS ELAPSED AND
-  // ACTIVITY WAS UNDONE.
-  {
-    taskDescription: `Good day. This work requires you to stay at the site for the new event being posted in the next week because this is qiite an important assignment that you must not miss even as you are not prepared at this moment to take it up right now.`,
-    dateAndTimeCreated: "2024-03-30T05:00:00.986Z",
-    dateAndTimeDeadline: "2024-04-10T05:00:00.986Z",
-    members: ["Imaledo David Shalom", "Ora Peace Flora"],
-    fileName: ["010c929688612d2fa083c4b3aa0ce105.jpg", "second file.word"],
-    url: [["Whatsapp", `https://wa.me/message/PYC4XA32DJT5L1`], ["Discord", `https://ds.rd/group/PYC4XA32DJT5L1`]],
-    draft: "",
-    impacts: 5,
-    newTask: true,
-    undone: false,
-    taskIndex: 5
-  },
-]
 
 const TheMonthActivity = ({ onPress, taskDescription, dateAndTimeDeadline, participated = "no" }) => {
   const theme = useTheme();

@@ -18,7 +18,6 @@ import RecentInformationComp from "../utilities/components/RecentInformationComp
 import TheMonthActivity from "../utilities/components/TheMonthActivity";
 import HomeInformationType from "../utilities/components/HomeInformationType";
 import OrgHandles from "../utilities/components/OrgHandles";
-import { format } from "date-fns";
 // NOTE THAT THE BORDER COLORS WILL BE BLACK
 // WHEN IN DARK THEME.  AND THAT IS BAD!!!
 const data = {
