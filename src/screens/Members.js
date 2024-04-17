@@ -344,7 +344,7 @@ const MembersAndIcons = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="link upload"
+      initialRouteName="members edit"
     >
       <Stack.Screen
         name="members"

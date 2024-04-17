@@ -25,7 +25,7 @@ import Constants from "expo-constants";
 import TaskComp from "../utilities/components/TaskComp";
 import TaskSubmission from "./TaskSubmission";
 import { createStackNavigator } from "@react-navigation/stack";
-import NumberComponent from "../utilities/components/NumberComponent";
+import SelectionComp, { NumberComponent } from "../utilities/components/NumberComponent";
 import { BlurView } from 'expo-blur';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
@@ -357,8 +357,7 @@ const Tasks = () => {
       )
     }
 
-    const SelectionComp = ({ data, mode, pressableOnPress }) => {
-
+    /*const SelectionComp = ({ data, mailsIncluded = null, mode, pressableOnPress }) => {
       return (
         <Portal>
           <Pressable onPress={pressableOnPress} style={{ backgroundColor: "#80808053", paddingBottom: 100, paddingHorizontal: 7, flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
@@ -367,6 +366,7 @@ const Tasks = () => {
                 data={data}
                 renderItem={(({ item }) => <NumberComponent
                   textValue={item}
+                  mailsIncluded={mailsIncluded}
                   borderWidth={() => {
                     if (mode == "single") return item == numberOfImpacts[0] ? 2 : .5
                     else return assigneeMembers.includes(item) ? 2 : .5
@@ -377,7 +377,10 @@ const Tasks = () => {
                   }}
                   height={() => {
                     if (mode == "single") return item === numberOfImpacts[0] ? 50 : 40
-                    else return assigneeMembers.includes(item) ? 50 : 40
+                    else {
+                      if (mailsIncluded) return 50
+                      else return assigneeMembers.includes(item) ? 50 : 40
+                    }
                   }}
                   marginHorizontal={() => {
                     if (mode == "single") return item === numberOfImpacts[0] ? 0 : 5
@@ -410,6 +413,51 @@ const Tasks = () => {
         </Portal>
       )
     }
+*/
+
+    const SelectionCompHere = ({ data, mode = "single", pressableOnPress }) =>
+      <SelectionComp
+        pressableOnPress={pressableOnPress}
+        data={data}
+        mode={mode}
+        renderItem={(({ item }) => <NumberComponent
+          textValue={item}
+          mailsIncluded={false}
+          borderWidth={(() => {
+            if (mode == "single") return item == numberOfImpacts[0] ? 2 : .5
+            else return assigneeMembers.includes(item) ? 2 : .5
+          })()}
+          borderColor={(() => {
+            if (mode == "single") return item == numberOfImpacts[0] ? theme.colors.primary : "black"
+            else return assigneeMembers.includes(item) ? theme.colors.primary : "black"
+          })()}
+          height={(() => {
+            if (mode == "single") return item === numberOfImpacts[0] ? 50 : 40
+            else return assigneeMembers.includes(item) ? 50 : 40
+          })()}
+          marginHorizontal={(() => {
+            if (mode == "single") return item === numberOfImpacts[0] ? 0 : 5
+            else return assigneeMembers.includes(item) ? 0 : 5
+          })()}
+          textVariant={mode == "single" ? "titleLarge" : "titleMedium"}
+          onPress={() => {
+            if (mode == "single") {
+              setNumberOfImpacts([item]);
+              setShowImpactNumberSelector(false)
+            }
+            else {
+              let te = [...assigneeMembers];
+              let compIndex = te.indexOf(item);
+              if (te.includes(item)) te.splice(compIndex, 1);
+              else te.push(item)
+              setAssigneeMembers(te)
+            }
+          }}
+        />
+        )}
+        singleListFooterComponent={<ImpactSelectorTextInput />}
+      />
+
 
     return (
       <ScrollView
@@ -509,7 +557,7 @@ const Tasks = () => {
           </View>
           {
             showAssigneeMembersSelector ?
-              <SelectionComp
+              <SelectionCompHere
                 data={membersExtractedForm}
                 mode="multiple"
                 pressableOnPress={() => setShowAssigneeMembersSelector(false)}
@@ -626,9 +674,8 @@ const Tasks = () => {
           */}
           {
             showImpactNumberSelector ?
-              <SelectionComp
+              <SelectionCompHere
                 data={Array.from({ length: 31 }, (_, i) => i)}
-                mode="single"
                 pressableOnPress={() => setShowImpactNumberSelector(false)}
               />
               :
