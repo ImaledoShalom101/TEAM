@@ -238,6 +238,7 @@ const Tasks = () => {
     const buttonInUse = useRef(false);
     const [showImpactNumberSelector, setShowImpactNumberSelector] = useState(false);
     const [showDeadlineDatePortal, setShowDeadlineDatePortal] = useState(false);
+    const [replaceImpactCompWithInput, setReplaceImpactCompWithInput] = useState(false);
 
 
     function uploadTask() {
@@ -334,21 +335,30 @@ const Tasks = () => {
       )
     }
 
-    const SelectionComp = ({ data, mode, pressableOnPress }) => {
-      const ImpactSelectorTextInput = () => {
-        return (
-          <TextInput
-            mode="outlined"
-            placeholder="Type impact amount..."
-            enterKeyHint="done"
-            inputMode="numeric"
-            onSubmitEditing={(value) => {
-              setNumberOfImpacts([value]);
+    const ImpactSelectorTextInput = () => {
+      return (
+        <TextInput
+          mode="outlined"
+          placeholder="Type impact amount..."
+          enterKeyHint="done"
+          inputMode="numeric"
+          onPressIn={() => {
+            if (showImpactNumberSelector) {
               setShowImpactNumberSelector(false)
-            }}
-          />
-        )
-      }
+              setReplaceImpactCompWithInput(true)
+            }
+          }}
+          onSubmitEditing={({ nativeEvent: { text, eventCount, target } }) => {
+            setNumberOfImpacts(text);
+            setShowImpactNumberSelector(false);
+            setReplaceImpactCompWithInput(false);
+          }}
+        />
+      )
+    }
+
+    const SelectionComp = ({ data, mode, pressableOnPress }) => {
+
       return (
         <Portal>
           <Pressable onPress={pressableOnPress} style={{ backgroundColor: "#80808053", paddingBottom: 100, paddingHorizontal: 7, flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
@@ -569,21 +579,26 @@ const Tasks = () => {
               {linkUnsaved ? "Save" : "Add link"}
             </Button>
           </View>
-          <Pressable onPress={() => setShowImpactNumberSelector(true)} style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", backgroundColor: theme.colors.primaryContainer, borderRadius: 10, paddingVertical: 5, paddingHorizontal: 15 }}>
-            <View style={{ flexDirection: "row", alignItems: "center", }}>
-              <Text variant="labelLarge">
-                {numberOfImpacts}
-              </Text>
-              <Text variant="labelLarge" style={{ letterSpacing: 0.5, color: theme.colors.primary }}>
-                {`  Impact${numberOfImpacts > 1 ? "s" : ""} to give on completion `}
-              </Text>
-            </View>
-            <Icon
-              source="diamond-stone"
-              size={19}
-              color="#b362ff"
-            />
-          </Pressable>
+          {
+            replaceImpactCompWithInput ?
+              <ImpactSelectorTextInput />
+              :
+              <Pressable onPress={() => setShowImpactNumberSelector(true)} style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", backgroundColor: theme.colors.primaryContainer, borderRadius: 10, paddingVertical: 5, paddingHorizontal: 15 }}>
+                <View style={{ flexDirection: "row", alignItems: "center", }}>
+                  <Text variant="labelLarge">
+                    {numberOfImpacts}
+                  </Text>
+                  <Text variant="labelLarge" style={{ letterSpacing: 0.5, color: theme.colors.primary }}>
+                    {`  Impact${numberOfImpacts > 1 ? "s" : ""} to give on completion `}
+                  </Text>
+                </View>
+                <Icon
+                  source="diamond-stone"
+                  size={19}
+                  color="#b362ff"
+                />
+              </Pressable>
+          }
           {/*
             showImpactNumberSelector ?
               <Portal>
