@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -18,11 +18,14 @@ import RecentInformationComp from "../utilities/components/RecentInformationComp
 import TheMonthActivity from "../utilities/components/TheMonthActivity";
 import HomeInformationType from "../utilities/components/HomeInformationType";
 import OrgHandles from "../utilities/components/OrgHandles";
+import AnimatedNumbers from 'react-native-animated-numbers';
 // NOTE THAT THE BORDER COLORS WILL BE BLACK
 // WHEN IN DARK THEME.  AND THAT IS BAD!!!
 const data = {
   admin: true,
   numberOfUnseenAnnouncement: 1,
+  userImpact: 18,
+  userAchievement: 18
 }
 
 const announcementListData = [
@@ -263,7 +266,7 @@ const DATA = [
 const DATAExtractedForm = DATA.map((data) => {
   const { taskDescription, dateAndTimeDeadline, newTask, undone } = data;
   return { taskDescription, dateAndTimeDeadline, newTask, undone };
-})//Array.from(DATA, (detail) => {const {taskDescription, dateDeadline, timeDeadline}});
+})
 
 
 const Home = ({ navigation }) => {
@@ -274,6 +277,14 @@ const Home = ({ navigation }) => {
   const whatsappLogo = require("../../assets/social_media_links/whatsapp.jpg");
   const xLogo = require("../../assets/social_media_links/x.jpg");
   const instagramLogo = require("../../assets/social_media_links/instagram.jpg");
+  const [impact, setImpact] = useState(data.userImpact);
+  const [achievement, setAchievement] = useState(data.userAchievement);
+
+  useEffect(() => {
+    setTimeout(() => setAchievement(5125), 1500)
+    setTimeout(() => setImpact(46), 2500)
+  }
+    , [])
 
   return (
     <ScrollView
@@ -288,7 +299,43 @@ const Home = ({ navigation }) => {
         :
         null
       }
+      <View style={{ paddingTop: 15, paddingBottom: 10, paddingHorizontal: 5, flexDirection: "row", justifyContent: "space-between" }}>
+        <View style={{ alignItems: "center", rowGap: 8 }}>
+          <Text variant="labelMedium" style={{ color: "grey" }}>
+            {impact > 1 ? "Impacts" : "Impact"} earned
+          </Text>
+          <View style={{ alignItems: "center", flexDirection: "row", columnGap: 7 }}>
+            <AnimatedNumbers
+              animateToNumber={impact}
+              includeComma
+              fontStyle={{ fontSize: 25, opacity: .9 }}
+            />
+            <Icon
+              source="diamond-stone"
+              size={39}
+              color="#b362ff"
+            />
+          </View>
+        </View>
 
+        <View style={{ alignItems: "center", rowGap: 8 }}>
+          <Text variant="labelMedium" style={{ color: "grey" }}>
+            Total {achievement > 1 ? "Achievements" : "Achievement"}
+          </Text>
+          <View style={{ alignItems: "center", flexDirection: "row", columnGap: 7 }}>
+            <AnimatedNumbers
+              animateToNumber={achievement}
+              includeComma
+              fontStyle={{ fontSize: 25, opacity: .9 }}
+            />
+            <Icon
+              source="trophy-outline"
+              size={39}
+              color="#62b8ff"
+            />
+          </View>
+        </View>
+      </View>
       <HomeInformationType
         iconName="star"
         iconColor="#ff0dff"
@@ -375,7 +422,7 @@ const Home = ({ navigation }) => {
           */}
 
       <HomeInformationType
-        iconName="email"
+        iconName="link-variant"
         iconColor="#ff6e0d"
         topic="Go to"
         seeMoreButtonText={data.admin ? "Edit" : null}

@@ -20,7 +20,7 @@ const ActivitiesTasks = () => {
   return (
     <Tab.Navigator
       activeColor={theme.colors.primary}
-      initialRouteName="Tasks"
+      initialRouteName="Activities"
     >
       <Tab.Screen
         name="Tasks"

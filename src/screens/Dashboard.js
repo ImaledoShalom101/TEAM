@@ -20,136 +20,63 @@ import { BlurView } from 'expo-blur';
 import AnimatedNumbers from 'react-native-animated-numbers';
 
 
-/*const userAchievementsTemplate = {
-  "survey sage": {
-    achievementName: "Survey completer",
-    achieved: 10,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "activity aficionado": {
-    achievementName: "Activity streak",
-    achieved: 10,
-    totalAchievable: 15,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "project pro": {
-    achievementName: "Project contributor",
-    achieved: 1,
-    totalAchievable: 8,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "knowledge keeper": {
-    achievementName: "Informed reader",
-    achieved: 3,
-    totalAchievable: 12,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "attendance ace": {
-    achievementName: "Reliable presence",
-    achieved: 1,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "impact magnate": {
-    achievementName: "Total imoacts",
-    achieved: 4,
-    totalAchievable: 17,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "poll proclaimer": {
-    achievementName: "Regular pollee",
-    achieved: 10,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "sign-in pioneer": {
-    achievementName: "NaN",
-    achieved: 10,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "badge boss": {
-    achievementName: "Badge collector",
-    achieved: 10,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  },
-  "all-star": {
-    achievementName: "NaN",
-    achieved: 10,
-    totalAchievable: 25,
-    icon: require(".png"),
-    iconFade: require("-fade.png")
-  }
-}*/
-
 
 const achievables = {
-  "Survey sage": {
-    numberAchieved: 25,
+  "survey sage": {
+    highestNumberAchievable: 25,
     inText: "Survey completer",
     icon: require("../../assets/achievements/survey-sage.png"),
     iconFade: require("../../assets/achievements/survey-sage-fade.png")
   },
-  "Activity aficionado": {
+  "activity aficionado": {
     highestNumberAchievable: 15,
     inText: "Activity streak",
     icon: require("../../assets/achievements/activity-aficionado.png"),
     iconFade: require("../../assets/achievements/activity-aficionado-fade.png")
   },
-  "Project pro": {
+  "task pro": {
     highestNumberAchievable: 8,
-    inText: "Project contributor",
-    icon: require("../../assets/achievements/project-pro.png"),
-    iconFade: require("../../assets/achievements/project-pro-fade.png")
+    inText: "Task contributor",
+    icon: require("../../assets/achievements/task-pro.png"),
+    iconFade: require("../../assets/achievements/task-pro-fade.png")
   },
-  "Knowledge keeper": {
+  "knowledge keeper": {
     highestNumberAchievable: 12,
     inText: "Informed reader",
     icon: require("../../assets/achievements/knowledge-keeper.png"),
     iconFade: require("../../assets/achievements/knowledge-keeper-fade.png")
   },
-  "Attendance ace": {
+  "attendance ace": {
     highestNumberAchievable: 25,
     inText: "Reliable presenc",
     icon: require("../../assets/achievements/attendance-ace.png"),
     iconFade: require("../../assets/achievements/attendance-ace-fade.png")
   },
-  "Impact magnate": {
+  "impact magnate": {
     highestNumberAchievable: 17,
     inText: "Total impact",
     icon: require("../../assets/achievements/impact-awarded.png"),
     iconFade: require("../../assets/achievements/impact-awarded-fade.png")
   },
-  "Poll proclaimer": {
+  "poll proclaimer": {
     highestNumberAchievable: 25,
     inText: "Regular pollee",
     icon: require("../../assets/achievements/poll-proclaimer.png"),
     iconFade: require("../../assets/achievements/poll-proclaimer-fade.png")
   },
-  "Badge boss": {
+  "badge boss": {
     highestNumberAchievable: 25,
     inText: "Badge collector",
     icon: require("../../assets/achievements/badge-boss.png"),
     iconFade: require("../../assets/achievements/badge-boss-fade.png")
   },
-  "Sign-in pioneer": {
+  "sign-in pioneer": {
     highestNumberAchievable: 1,
     inText: "Signup pioneer",
     icon: require("../../assets/achievements/signin-pioneer.png"),
     iconFade: null
   },
-  "All-star": {
+  "all-star": {
     highestNumberAchievable: 1,
     inText: "All-star",
     icon: require("../../assets/achievements/all-star.png"),
@@ -157,11 +84,10 @@ const achievables = {
   }
 }
 
-
 const userAchievements = {
   "Survey sage": 10,// THIS SHOULD HOLD AN ARRAY WHICH THE POSITIONS OF BADGES WON ARE INCLUDED IN
   "Activity aficionado": 14,
-  "Project pro": 1,
+  "Task pro": 1,
   "Knowledge keeper": 3,
   "Attendance ace": 1,
   "Impact magnate": 4,
@@ -171,123 +97,59 @@ const userAchievements = {
   "All-star": 1
 }
 
-/*const userAchievements = [
-  {
-    achievementName: "Survey completer",
-    achieved: 10,
-    iconFade: require("../../assets/achievements/survey-sage-fade.png")
-  },
-  {
-    achievementName: "Activity streak",
-    achieved: 14,
-    iconFade: require("../../assets/achievements/activity-aficionado-fade.png")
-  },
-  {
-    achievementName: "Project contributor",
-    achieved: 1,
-    iconFade: require("../../assets/achievements/project-pro-fade.png")
-  },
-  {
-    achievementName: "Informed reader",
-    achieved: 3,
-    iconFade: require("../../assets/achievements/knowledge-keeper-fade.png")
-  },
-  {
-    achievementName: "Reliable presence",
-    achieved: 1,
-    iconFade: require("../../assets/achievements/attendance-ace-fade.png")
-  },
-  {
-    achievementName: "Total impacts",
-    achieved: 4,
-    iconFade: require("../../assets/achievements/impact-awarded-fade.png")
-  },
-  {
-    achievementName: "Regular pollee",
-    achieved: 10,
-    iconFade: require("../../assets/achievements/poll-proclaimer-fade.png")
-  },
-  {
-    achievementName: "Signup pioneer",
-    achieved: 1,
-    iconFade: require("../../assets/achievements/signin-pioneer.png")
-  },
-  {
-    achievementName: "Badge collector",
-    achieved: 10,
-    iconFade: require("../../assets/achievements/badge-boss-fade.png")
-  },
-  {
-    achievementName: "All-star",
-    achieved: 10,
-    iconFade: require("../../assets/achievements/all-star.png")
-  }
-]*/
-
 const achievementsNonCollapsedMode = [
-  ["sign-in pioneer", "1"],
-  ["survey sage", "2"],
-  ["survey sage", "3"],
-  ["attendance ace", "4"],
-  ["activity aficionado", "5"],
-  ["all-star", "6"],
-  ["attendance ace", "7"],
-  ["knowledge keeper", "8"],
-  ["sign-in pioneer", "9"],
-  ["sign-in pioneer", "10"],
-  ["survey sage", "20"],
-  ["survey sage", "30"],
-  ["attendance ace", "40"],
-  ["activity aficionado", "50"],
-  ["all-star", "60"],
-  ["attendance ace", "70"],
-  ["knowledge keeper", "80"],
-  ["sign-in pioneer", "90"],
+  ["sign-in pioneer", "10/05/24", "1"], //INDEX OF ACHIEVEMENT
+  ["survey sage", "10/05/24", "2"],
+  ["survey sage", "10/05/24", "3"],
+  ["attendance ace", "10/05/24", "4"],
+  ["activity aficionado", "10/05/24", "5"],
+  ["all-star", "10/05/24", "6"],
+  ["attendance ace", "10/05/24", "7"],
+  ["knowledge keeper", "10/05/24", "8"],
+  ["sign-in pioneer", "10/05/24", "9"],
+  ["sign-in pioneer", "10/05/24", "10"],
+  ["survey sage", "10/05/24", "20"],
+  ["survey sage", "10/05/24", "30"],
+  ["attendance ace", "10/05/24", "40"],
+  ["activity aficionado", "10/05/24", "50"],
+  ["all-star", "10/05/24", "60"],
+  ["attendance ace", "10/05/24", "70"],
+  ["knowledge keeper", "10/05/24", "80"],
+  ["sign-in pioneer", "10/05/24", "90"],
 ]
 
 const achievementsCollapsedMode = {
   "survey sage": {
     numberAchieved: 2,
-    icon: require("../../assets/achievements/survey-sage.png"),
   },
   "activity aficionado": {
     numberAchieved: 4,
-    icon: require("../../assets/achievements/activity-aficionado.png"),
   },
-  "project pro": {
+  "task pro": {
     numberAchieved: 1,
-    icon: require("../../assets/achievements/project-pro.png"),
   },
   "knowledge keeper": {
     numberAchieved: 3,
-    icon: require("../../assets/achievements/knowledge-keeper.png"),
   },
   "attendance ace": {
     numberAchieved: 8,
-    icon: require("../../assets/achievements/attendance-ace.png"),
   },
   "impact magnate": {
     numberAchieved: 5,
-    icon: require("../../assets/achievements/impact-awarded-fade.png"),
   },
   "poll proclaimer": {
     numberAchieved: 2,
-    icon: require("../../assets/achievements/poll-proclaimer.png"),
   },
   "sign-in pioneer": {
     numberAchieved: 6,
-    icon: require("../../assets/achievements/signin-pioneer.png")
   },
   "badge boss": {
     numberAchieved: 9,
-    icon: require("../../assets/achievements/badge-boss.png"),
   },
   "all-star": {
     numberAchieved: 3,
-    icon: require("../../assets/achievements/all-star.png")
   }
 }
-
 
 const data = {
   userUsername: "UserName",
@@ -297,23 +159,85 @@ const data = {
   userAchievement: achievementsNonCollapsedMode.length
 }
 
-const Dashboard = () => {
+const members = {
+  "Imaledo Sharon Tolulope": {
+    username: "goingOverGG",
+    numberOfBadges: "3",
+    impacts: "1",
+    emailAddress: "sharontolulope@gmail.com",
+    phoneNumber: "08141663809",
+    lastOnline: "previous week",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [1, require("../../assets/achievements/badge-boss.png")],
+      [1, require("../../assets/achievements/poll-proclaimer.png")],
+      [1, require("../../assets/achievements/attendance-ace.png")],
+    ]
+  },
+  "Imaledo David Shalom": {
+    username: "shalom#01",
+    numberOfBadges: "8",
+    impacts: "25",
+    emailAddress: "shalomimaledo@gmail.com",
+    phoneNumber: "09137287950",
+    lastOnline: null,
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [4, require("../../assets/achievements/badge-boss.png")],
+      [3, require("../../assets/achievements/poll-proclaimer.png")],
+      [1, require("../../assets/achievements/attendance-ace.png")],
+    ]
+  },
+  "Omosekafe Isaiah": {
+    username: "omoInTheMaking252",
+    numberOfBadges: "4",
+    impacts: "9",
+    emailAddress: "augmentedone@zohomail.com",
+    phoneNumber: "08028299888",
+    lastOnline: "yesterday",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [2, require("../../assets/achievements/all-star.png")],
+      [1, require("../../assets/achievements/knowledge-keeper.png")],
+      [1, require("../../assets/achievements/task-pro.png")],
+    ]
+  },
+  "Dunsin Divine Favour": {
+    username: "divineFavour239",
+    numberOfBadges: "15",
+    impacts: "37",
+    emailAddress: "divinefavourohele@gmail.com",
+    phoneNumber: "08176268186",
+    lastOnline: "today",
+    profilePicture: require("../../assets/20231112_123338331.jpg"),
+    badges: [
+      [7, require("../../assets/achievements/impact-awarded.png")],
+      [5, require("../../assets/achievements/signin-pioneer.png")],
+      [3, require("../../assets/achievements/survey-sage.png")],
+    ]
+  },
+}
+
+const Dashboard = ({ route }) => {
   //console.warn(Device.modelName)
+  let memberFullName = null;
+  try {
+    memberFullName = route.params.memberFullName;
+  } catch (err) { }
   const theme = useTheme();
-  const [username, setUsername] = useState(data.userUsername);
-  const [fullName, setfullName] = useState(data.userFullName);
-  const [emailAddress, setEmailAddress] = useState(data.userEmailAddress);
-  const [impact, setImpact] = useState(data.userImpact);
+  const [fullName, setfullName] = useState(memberFullName || data.userFullName);
+  const [username, setUsername] = useState(memberFullName ? members[memberFullName].username : data.userUsername);
+  const [emailAddress, setEmailAddress] = useState(memberFullName ? members[memberFullName].emailAddress : data.userEmailAddress);
+  const [impact, setImpact] = useState(memberFullName ? members[memberFullName].impacts : data.userImpact);
   const [achievement, setAchievement] = useState(data.userAchievement);
+  const [collapsedAchievement, setCollapsedAchievement] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setAchievement(5125)
-      setImpact(46)
-    }
-      , 5000)
+    setTimeout(() => setAchievement(5125), 1500)
+    setTimeout(() => setImpact(46), 2500)
   }
     , [])
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 10, paddingTop: 15, paddingBottom: 20, rowGap: 50 }}>
@@ -325,11 +249,11 @@ const Dashboard = () => {
             />
             {/*USE AN Avatar.Text IF USER DOES NOT UPLOAD A PROILE PHOTO*/}
           </View>
-          <View style={{ rowGap: 5, justifyContent: "center" }}>
+          <View style={{ rowGap: 2, justifyContent: "center" }}>
             <Text variant="labelLarge" style={{ color: "#0dbbff" }}>
               @{username}
             </Text>
-            <Text variant="titleMedium" >
+            <Text variant="titleMedium" style={{ fontSize: 17 }}>
               {fullName}
             </Text>
             <Text variant="labelMedium" style={{ opacity: .6 }}>
@@ -360,7 +284,6 @@ const Dashboard = () => {
               />
             </View>
           </View>
-
           <View style={{ alignItems: "center", rowGap: 8 }}>
             <Text variant="labelMedium" style={{ color: "grey" }}>
               Total {achievement > 1 ? "Achievements" : "Achievement"}
@@ -386,9 +309,9 @@ const Dashboard = () => {
               <AchievementStatusComp
                 key={achievement}
                 achievementName={achievement}
-                totalAchievable={achievables[achievement].highestNumberAchievable}
+                totalAchievable={achievables[achievement.toLowerCase()].highestNumberAchievable}
                 achieved={userAchievements[achievement]}
-                iconFade={achievement === "Sign-in pioneer" || achievement === "All-star" ? achievables[achievement].icon : achievables[achievement].iconFade}
+                iconFade={achievement === "Sign-in pioneer" || achievement === "All-star" ? achievables[achievement.toLowerCase()].icon : achievables[achievement.toLowerCase()].iconFade}
               />
             )
           }
@@ -399,29 +322,50 @@ const Dashboard = () => {
               Your Achievement{achievementsNonCollapsedMode.length > 1 ? "s" : ""}
             </Text>
             <IconButton
-              icon="layers-outline"
+              icon={collapsedAchievement ? "layers" : "layers-outline"}
               iconColor={theme.colors.primary}
-              onPress={() => console.warn("Should group achievements when clicked and change the date text to number of each achievement.")}
+              onPress={() => setCollapsedAchievement(prev => !prev)}
             />
           </View>
           <View style={{ flexWrap: "wrap", justifyContent: "space-around", flexDirection: "row", columnGap: 30, rowGap: 35 }}>
             {
-              achievementsNonCollapsedMode.map((achieved) =>
-                <View key={achieved[1]} style={{ rowGap: 5, alignItems: "center" }}>
-                  <Avatar.Image
-                    source={achievementsCollapsedMode[achieved[0]].icon}
-                    size={65}
+              collapsedAchievement ?
+                Object.entries(achievementsCollapsedMode).map((achieved) =>
+                  <AchievementRecordComp
+                    key={achieved[0]}
+                    detailText={achieved[1].numberAchieved}
+                    avatarSource={achievables[achieved[0]].icon}
+                    detailTextVariant="bodyMedium"
                   />
-                  <Text variant="labelSmall" style={{ opacity: .35 }}>
-                    10/05/24
-                  </Text>
-                </View>
-              )
+                )
+                :
+                achievementsNonCollapsedMode.map((achieved) =>
+                  <AchievementRecordComp
+                    key={achieved[2]}
+                    detailText={achieved[1]}
+                    avatarSource={achievables[achieved[0]].icon}
+                  />
+                )
             }
           </View>
         </View>
       </ScrollView>
     </SafeAreaView >
+  )
+}
+
+const AchievementRecordComp = ({ avatarSource, detailText, detailTextVariant = "labelSmall" }) => {
+
+  return (
+    <View style={{ rowGap: 5, alignItems: "center" }}>
+      <Avatar.Image
+        source={avatarSource}
+        size={65}
+      />
+      <Text variant={detailTextVariant} style={{ opacity: .35 }}>
+        {detailText}
+      </Text>
+    </View>
   )
 }
 

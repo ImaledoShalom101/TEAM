@@ -82,7 +82,7 @@ const members = [
     badges: [
       [2, require("../../assets/achievements/all-star.png")],
       [1, require("../../assets/achievements/knowledge-keeper.png")],
-      [1, require("../../assets/achievements/project-pro.png")],
+      [1, require("../../assets/achievements/task-pro.png")],
     ]
   },
   {
@@ -126,6 +126,7 @@ export const HeaderSideIcons = () => {
 
 const Members = ({ navigation }) => {
   const theme = useTheme();
+  const parentNavigation = navigation.getParent()
   const [selectedMemberIndex, setSelectedMemberIndex] = useState(null);
   const [userOptionsMenu, setuserOptionsMenu] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -222,16 +223,16 @@ const Members = ({ navigation }) => {
                   size={70}
                 />
                 <View style={{ rowGap: 7, flex: 1 }}>
-                  <View style={{ rowGap: 1 }}>
+                  <Pressable onPress={() => navigation.navigate("Members and Dashboard", { screen: "Dashboard", params: { memberFullName: members[selectedMemberIndex].fullName } })} style={{ rowGap: 1 }}>
                     <Text numberOfLines={1} variant="labelLarge" style={{ fontSize: 17 }}>
                       {members[selectedMemberIndex].fullName}
                     </Text>
                     <Text numberOfLines={1} variant="bodySmall" style={{ color: "#0dbbff" }}>
                       @{members[selectedMemberIndex].username}
                     </Text>
-                  </View>
+                  </Pressable>
                   <View style={{ flexDirection: "row", paddingRight: 8, alignItems: "center", justifyContent: "space-between" }}>
-                    <View style={{ columnGap: 6, flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <Pressable onPress={() => parentNavigation.navigate("Dashboard", { memberFullName: members[selectedMemberIndex].fullName })} style={{ columnGap: 6, flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                       <Text variant="labelLarge" style={{ opacity: .8 }}>
                         {members[selectedMemberIndex].numberOfBadges}
                       </Text>
@@ -244,7 +245,7 @@ const Members = ({ navigation }) => {
                           />
                           )}
                       </View>
-                    </View>
+                    </Pressable>
                     <View>
                       <Text variant="labelLarge" style={{ opacity: .8 }}>
                         {members[selectedMemberIndex].impacts}
@@ -344,7 +345,7 @@ const MembersAndIcons = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="members edit"
+      initialRouteName="members"
     >
       <Stack.Screen
         name="members"

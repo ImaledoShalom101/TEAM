@@ -44,8 +44,10 @@ import Announcement from "../../screens/Announcement";
 import Settings from "../../screens/Settings";
 import * as Clipboard from "expo-clipboard";
 import { BlurView } from 'expo-blur';
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 const data = {
   orgName: "Aura",
@@ -58,6 +60,24 @@ const data = {
     //plan: "All-in-one", color: "purple",
   }
 }
+
+const ScreenSelect = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false
+    }}
+    initialRouteName={data.admin ? "Members" : "Dashboard"}
+  >
+    <Stack.Screen
+      name="Members"
+      component={Members}
+    />
+    <Stack.Screen
+      name="Dashboard"
+      component={Dashboard}
+    />
+  </Stack.Navigator>
+)
 
 const DDrawer = (props) => {
   const [orgName, setOrgName] = useState("Org Name");
@@ -340,7 +360,7 @@ const MainDrawer = () => {
       drawerContent={
         (props) => <DDrawer {...props} />
       }
-      initialRouteName="Members">
+      initialRouteName="Dashboard">
       <Drawer.Screen
         name="Home"
         component={Home}
@@ -372,9 +392,10 @@ const MainDrawer = () => {
         }}
       />
       <Drawer.Screen
-        name={data.admin ? "Members" : "Dashboard"}
-        component={data.admin ? Members : Dashboard}
+        name="Members and Dashboard"
+        component={ScreenSelect}
         options={{
+          title: data.admin ? "Members" : "Dashboard",
           drawerIcon: ({ focused, ...props }) => <Icon {...props} source={focused ? data.admin ? "account-group" : "view-dashboard-variant" : data.admin ? "account-group-outline" : "view-dashboard-outline"} />,
           drawerLabel: () => <DDrawerLabelWithBadge itemName={data.admin ? "Members" : "Dashboard"} />
         }}
@@ -398,6 +419,8 @@ const MainDrawer = () => {
     </Drawer.Navigator>
   )
 }
+
+
 const STYLES = StyleSheet.create({
   forSafeAreaView: {
     flex: 1,

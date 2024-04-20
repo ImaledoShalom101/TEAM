@@ -70,7 +70,7 @@ const members = [
     badges: [
       [2, require("../../assets/achievements/all-star.png")],
       [1, require("../../assets/achievements/knowledge-keeper.png")],
-      [1, require("../../assets/achievements/project-pro.png")],
+      [1, require("../../assets/achievements/task-pro.png")],
     ]
   },
   {
@@ -108,7 +108,6 @@ const MembersEdit = ({ navigation, route }) => {
   const [sweetenedMembersEmailAddresses, setSweetenedMembersEmailAddresses] = useState(membersEmailAddressesFromData);
   const [membersEmailAddressesError, setMembersEmailAddressesError] = useState(false);
   const [showListOfMembersEmailAddressesComp, setShowListOfMembersEmailAddressesComp] = useState(false);
-  let sweet;
   const allow = useRef(true);
   const buttonInUse = useRef(false);
   const membersEmailAddressesText = useRef("")
@@ -144,7 +143,6 @@ const MembersEdit = ({ navigation, route }) => {
     membersEmailAddressesText.current = value;
     let sweet = membersEmailAddressesText.current.replaceAll(" ", "").replaceAll(",\n", "£¢€¥^").replaceAll("\n,", "£¢€¥^").replaceAll("\n", "£¢€¥^").replaceAll(",", "£¢€¥^").split("£¢€¥^");
     sweet = sweet.filter(swe => swe)
-    console.warn(sweet)
     const additionText = membersFullnameAndEmailAddressesFromData.length + " + " + sweet.length;
     additionText !== membersPopulation ? setMembersPopulation(additionText) : null
     // THERE IS AN ISSUE HERE, RESOLVE IT VERY SMARTLY

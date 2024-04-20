@@ -162,7 +162,7 @@ const members = [
     badges: [
       [2, require("../../assets/achievements/all-star.png")],
       [1, require("../../assets/achievements/knowledge-keeper.png")],
-      [1, require("../../assets/achievements/project-pro.png")],
+      [1, require("../../assets/achievements/task-pro.png")],
     ]
   },
   {
@@ -356,64 +356,6 @@ const Tasks = () => {
         />
       )
     }
-
-    /*const SelectionComp = ({ data, mailsIncluded = null, mode, pressableOnPress }) => {
-      return (
-        <Portal>
-          <Pressable onPress={pressableOnPress} style={{ backgroundColor: "#80808053", paddingBottom: 100, paddingHorizontal: 7, flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
-            <View style={{ flex: mode == "single" ? .38 : .65, width: "100%" }}>
-              <FlatList
-                data={data}
-                renderItem={(({ item }) => <NumberComponent
-                  textValue={item}
-                  mailsIncluded={mailsIncluded}
-                  borderWidth={() => {
-                    if (mode == "single") return item == numberOfImpacts[0] ? 2 : .5
-                    else return assigneeMembers.includes(item) ? 2 : .5
-                  }}
-                  borderColor={() => {
-                    if (mode == "single") return item == numberOfImpacts[0] ? theme.colors.primary : "black"
-                    else return assigneeMembers.includes(item) ? theme.colors.primary : "black"
-                  }}
-                  height={() => {
-                    if (mode == "single") return item === numberOfImpacts[0] ? 50 : 40
-                    else {
-                      if (mailsIncluded) return 50
-                      else return assigneeMembers.includes(item) ? 50 : 40
-                    }
-                  }}
-                  marginHorizontal={() => {
-                    if (mode == "single") return item === numberOfImpacts[0] ? 0 : 5
-                    else return assigneeMembers.includes(item) ? 0 : 5
-                  }}
-                  textVariant={mode == "single" ? "titleLarge" : "titleMedium"}
-                  onPress={() => {
-                    if (mode == "single") {
-                      setNumberOfImpacts([item]);
-                      setShowImpactNumberSelector(false)
-                    }
-                    else {
-                      let te = [...assigneeMembers];
-                      let compIndex = te.indexOf(item);
-                      if (te.includes(item)) te.splice(compIndex, 1);
-                      else te.push(item)
-                      setAssigneeMembers(te)
-                    }
-                  }}
-                />
-                )}
-                ListFooterComponent={mode == "single" ? <ImpactSelectorTextInput /> : null}
-                showsVerticalScrollIndicator={false}
-                overScrollMode="never"
-                contentContainerStyle={{ rowGap: 5, paddingHorizontal: 7, paddingVertical: 4 }}
-                style={{ width: "100%", backgroundColor: "white", borderRadius: 5 }}
-              />
-            </View>
-          </Pressable>
-        </Portal>
-      )
-    }
-*/
 
     const SelectionCompHere = ({ data, mode = "single", pressableOnPress }) =>
       <SelectionComp
@@ -743,7 +685,7 @@ const Tasks = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="task submittor"
+      initialRouteName="all tasks"
     >
       <Stack.Screen
         name="all tasks"

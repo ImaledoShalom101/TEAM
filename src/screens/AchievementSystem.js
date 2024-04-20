@@ -41,12 +41,12 @@ const achievables = {
     icon: require("../../assets/achievements/activity-aficionado.png"),
     iconFade: require("../../assets/achievements/activity-aficionado-fade.png")
   },
-  "Project pro": {
+  "Task pro": {
     highestNumberAchievable: 0,
-    inText: "Project contributor",
-    helperEndText: "successfully participate in a project",
-    icon: require("../../assets/achievements/project-pro.png"),
-    iconFade: require("../../assets/achievements/project-pro-fade.png")
+    inText: "Task contributor",
+    helperEndText: "successfully participate in a task",
+    icon: require("../../assets/achievements/task-pro.png"),
+    iconFade: require("../../assets/achievements/task-pro-fade.png")
   },
   "Knowledge keeper": {
     highestNumberAchievable: 0,
