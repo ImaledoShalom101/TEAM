@@ -29,6 +29,8 @@ import SelectionComp, { NumberComponent } from "../utilities/components/NumberCo
 import { BlurView } from 'expo-blur';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
+import TimePicker from "../utilities/components/TimePicker";
+import { DateTime } from "luxon";
 
 const Stack = createStackNavigator();
 
@@ -215,8 +217,9 @@ const Tasks = () => {
   const TaskSubmittor = ({ navigation }) => {
     const [taskDescriptionText, setTaskDescriptionText] = useState("");
     const [dateDeadlineText, setDateDeadlineText] = useState(dayjs());
-    const [shownDateDeadline, setShownDateDeadline] = useState(dateDeadlineText.format("MM-DD"));
-    const [timeDeadlineText, setTimeDeadlineText] = useState("");
+    const [shownDateDeadline, setShownDateDeadline] = useState(dateDeadlineText.format("DD/MM"));
+    const [timeDeadlineText, setTimeDeadlineText] = useState(DateTime.now());
+    const [shownTimeDeadline, setShownTimeDeadline] = useState(timeDeadlineText.toFormat("h:mm a"));
     const [numberOfImpacts, setNumberOfImpacts] = useState(["0"]);
     const [linkOutsideText, setLinkOutsideText] = useState("");
     const [linkText, setLinkText] = useState("");
@@ -237,7 +240,8 @@ const Tasks = () => {
     const allow = useRef(true);
     const buttonInUse = useRef(false);
     const [showImpactNumberSelector, setShowImpactNumberSelector] = useState(false);
-    const [showDeadlineDatePortal, setShowDeadlineDatePortal] = useState(false);
+    const [showDateDeadlineDatePortal, setShowDateDeadlineDatePortal] = useState(false);
+    const [showTimeDeadlineDatePortal, setShowTimeDeadlineDatePortal] = useState(false);
     const [replaceImpactCompWithInput, setReplaceImpactCompWithInput] = useState(false);
 
 
@@ -256,10 +260,21 @@ const Tasks = () => {
         allow.current = false;
       }
 
-      if (!timeDeadlineText.trim()) {
+      /*if (!timeDeadlineText.trim()) {
         setTimeDeadlineError(true);
         allow.current = false;
-      }
+      }*/
+
+      const dateToLuxonDateTime = DateTime.fromISO(dateDeadlineText.format('YYYY-MM-DDTHH:mm:ssZ'));
+      let dateTimeDeadlineText = DateTime.fromObject({
+        month: dateToLuxonDateTime.month,
+        day: dateToLuxonDateTime.day,
+        hour: timeDeadlineText.hour,
+        minute: timeDeadlineText.minute
+      })
+      console.warn(dateTimeDeadlineText < DateTime.now())
+      return
+
 
       if (assigneeMembers.length == 0) {
         setAssigneeMembersError(true);
@@ -433,7 +448,7 @@ const Tasks = () => {
               Deadline
             </HelperText>
             <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 8, }}>
-              <Pressable onPress={() => setShowDeadlineDatePortal(true)}>
+              <Pressable onPress={() => setShowDateDeadlineDatePortal(true)}>
                 <TextInput
                   placeholder="Date"
                   error={dateDeadlineError}
@@ -444,7 +459,7 @@ const Tasks = () => {
                 />
               </Pressable>
               {
-                showDeadlineDatePortal ?
+                showDateDeadlineDatePortal ?
                   <Portal>
                     <BlurView tint="light" intensity={17} style={{ flex: 1 }}>
                       <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
@@ -456,7 +471,7 @@ const Tasks = () => {
                           <DateTimePicker
                             mode="single"
                             date={dateDeadlineText}
-                            onChange={({ date }) => { setDateDeadlineText(date); setShownDateDeadline(date.format("MM-DD")); setTimeout(() => setShowDeadlineDatePortal(false), 1000) }}
+                            onChange={({ date }) => { setDateDeadlineText(date); setShownDateDeadline(date.format("DD/MM")); setTimeout(() => setShowDateDeadlineDatePortal(false), 1000) }}
                             selectedItemColor="rgb(211,13,255)"
                           />
                           <HelperText style={{ textAlign: "center", color: "#0000ff9e", fontSize: 11, letterSpacing: .17 }}>
@@ -473,13 +488,28 @@ const Tasks = () => {
                   :
                   null
               }
-              <TextInput
-                placeholder="Time"
-                error={timeDeadlineError}
-                mode="outlined"
-                onChangeText={(value) => { setTimeDeadlineText(value); timeDeadlineError ? setTimeDeadlineError(false) : null; buttonInUse.current ? buttonInUse.current = false : null }}
-                style={{ width: 100 }}
-              />
+              <Pressable onPress={() => setShowTimeDeadlineDatePortal(true)}>
+                <TextInput
+                  placeholder="Time"
+                  value={shownTimeDeadline}
+                  error={timeDeadlineError}
+                  mode="outlined"
+                  editable={false}
+                  onChangeText={(value) => { timeDeadlineError ? setTimeDeadlineError(false) : null; buttonInUse.current ? buttonInUse.current = false : null }}
+                  style={{ width: 100 }}
+                />
+              </Pressable>
+              {
+                showTimeDeadlineDatePortal ?
+                  <Portal>
+                    <TimePicker
+                      onTimeSelected={(totalTime) => { setTimeDeadlineText(totalTime); setShownTimeDeadline(totalTime.toFormat("h:mm a")); setShowTimeDeadlineDatePortal(false); }}
+                      currentTime={timeDeadlineText}
+                    />
+                  </Portal>
+                  :
+                  null
+              }
             </View>
           </View>
           <View style={{}}>
@@ -631,12 +661,11 @@ const Tasks = () => {
             style={{ borderRadius: 15, marginBottom: 20 }}
             labelStyle={{ fontSize: 20 }}
             contentStyle={{ height: 43 }}
-            onPress={uploadTask}
-          >
+            onPress={uploadTask}>
             Assign
           </Button>
         </View>
-      </ScrollView>
+      </ScrollView >
     )
   }
 
@@ -685,7 +714,7 @@ const Tasks = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="all tasks"
+      initialRouteName="task submittor"
     >
       <Stack.Screen
         name="all tasks"

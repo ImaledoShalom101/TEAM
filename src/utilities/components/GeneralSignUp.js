@@ -27,7 +27,7 @@ import PhoneInput from 'react-native-international-phone-number';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 import { BlurView } from 'expo-blur';
-import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker';
+//import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker';
 import { OtpInput } from "react-native-otp-entry";
 
 

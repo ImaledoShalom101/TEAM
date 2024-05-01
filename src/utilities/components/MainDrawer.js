@@ -360,7 +360,7 @@ const MainDrawer = () => {
       drawerContent={
         (props) => <DDrawer {...props} />
       }
-      initialRouteName="Dashboard">
+      initialRouteName="Activities And Tasks">
       <Drawer.Screen
         name="Home"
         component={Home}
