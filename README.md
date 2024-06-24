@@ -15,7 +15,7 @@
 
 ### Project Name
 
-**TEAM** <sub>_...digital medium for organisations._</sub>
+**TEAM** <sub>_...the digital medium for organisations._</sub>
 
 ### Brief Description
 
@@ -76,7 +76,13 @@ Javascript
 
 Some of the most ~~challenging~~ interesting features I made include:
 
-1. Lets see.
+1. The Home Screen itself
+
+![Home screen 1 of TEAM App](/assets/READMEAssets/home-shot-1.jpg) ![Home screen 2 of TEAM App](/assets/READMEAssets/home-shot-2.jpg)
+
+2.
+
+Last. (Impact magnate shot) This is probably my favorite screen yet, and I don't even know why.
 
 ### Basic Functionality
 
@@ -97,3 +103,19 @@ Some of the most ~~challenging~~ interesting features I made include:
 This incomplete codebase, and the project as a whole, is subject to license,
 and completely restricts use, plagiarism, and any other actions which break its
 copyright. [Read through the license](/LICENSE) by clicking here.
+
+<br>
+
+## Contact
+
+**Reach out to me on** :v:
+
+-   [**Whatsapp**](https://wa.me/+2349137287950) :yellow_heart:
+-   [**LinkedIn**](https://www.linkedin.com/in/imaledo-david-2594b3258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) :white_heart:
+
+<br>
+
+## Product Documentation
+
+Check out the [product documentation](/READMEForUsers.md) containing the detailed user guide
+, along with FAQs, for TEAM App. Thanks for reading. :hugs:
