@@ -1,4 +1,5 @@
 <br>
+
 > [!NOTE]
 > Incomplete codebase. Codebase has been privatized.
 
@@ -10,14 +11,13 @@
 
 ### Project Name
 
-**TEAM**
-
-_...your favorite organisation hub._
+**TEAM** <sub>_...your organisation's top hub._</sub>
 
 ### Brief Description
 
 TEAM is an app designed to make operations, ideations, and
 inner distributions of an organization seamless, scalable, and effortless.
+
 <br>
 
 ## Getting Started
@@ -31,6 +31,7 @@ details will be uploaded immediately after production._
 
 _Development still ongoing,
 supported architectures will be listed immediately after production._
+
 <br>
 
 ## Usage Guide
@@ -54,5 +55,5 @@ supported architectures will be listed immediately after production._
 ### License Information
 
 This incomplete codebase, and the project as a whole, is subject to license,
-and completely restricts use, plagiarism, and any other actions which breaks its
+and completely restricts use, plagiarism, and any other actions which break its
 copyright. [Read through the license](/LICENSE) by clicking here.
