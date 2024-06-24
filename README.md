@@ -9,34 +9,74 @@
 
 ## Project Overview
 
+### PROJECT STATUS
+
+**Ongoing**
+
 ### Project Name
 
-**TEAM** <sub>_...your organisation's top hub._</sub>
+**TEAM** <sub>_...digital medium for organisations._</sub>
 
 ### Brief Description
 
 TEAM is an app designed to make operations, ideations, and
-inner distributions of an organization seamless, scalable, and effortless.
+inner distributions of an organization seamless, effortless and highly productive.
+
+Administration of any organisation can create an org account in TEAM app, and simply upload
+email addresses of members to give them sign in permission. Various features are in TEAM app
+to highly optimize the organisation's efficiency, and serve as an "ease medium" between admin
+and members.
 
 <br>
 
-## Getting Started
+## Technical Overview
 
-### Installation Instructions
+### Tech Stack
 
-_Development still ongoing,
-details will be uploaded immediately after production._
+#### Programming Languages
 
-### Prerequisites
+Javascript
 
-_Development still ongoing,
-supported architectures will be listed immediately after production._
+#### Frameworks
+
+-   React Native
+-   Expo
+
+#### Libraries
+
+-   React Native Paper
+-   Date-fns
+-   Luxon
+-   React Native Async Storage
+-   [ ] Firebase
+-   [ ] Redux Toolkit
+-   More...
+
+### System Design
+
+-   **Scalability**
+    -   has potential for large number of users.
+    -   _Backend work still in progress_
+-   **Performance**
+    -   impressive UX still being optimized.
+    -   strictly on non-expensive actions.
+    -   consistent use of React hooks.
+-   **Security**
+    -   use of Expo security tools.
+    -   checks between rendering of components.
+-   **Maintainability**
+    -   well-structured files.
+    -   standard compartmentalization.
 
 <br>
 
-## Usage Guide
+## Functionality Highlights
 
-### Running the software
+### Key Features
+
+Some of the most ~~challenging~~ interesting features I made include:
+
+1. Lets see.
 
 ### Basic Functionality
 
