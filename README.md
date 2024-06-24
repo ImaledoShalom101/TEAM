@@ -78,7 +78,8 @@ Some of the most ~~challenging~~ interesting features I made include:
 
 1. The Home Screen itself
 
-![Home screen 1 of TEAM App](/assets/READMEAssets/home-shot-1.jpg) ![Home screen 2 of TEAM App](/assets/READMEAssets/home-shot-2.jpg)
+<img src="/assets/READMEAssets/home-shot-1.jpg" alt="Home screen 1 of TEAM App" width="250" />$~~~~~~~$<img src="/assets/READMEAssets/home-shot-2.jpg" alt="Home screen 2 of TEAM App" width="250" />
+
 
 2.
 
