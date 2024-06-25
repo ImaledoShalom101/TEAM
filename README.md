@@ -73,7 +73,7 @@ Javascript
 ## Functionality Highlights
 
 > [!NOTE]
-> I am NOT a UI designer. :grin: I'm also not a big fan of Loren Ipsum. :cry:
+> I am NOT a UI designer. :grin: I'm also not a big fan of Loren Ipsum. 🥲
 
 ### Key Features
 
@@ -140,8 +140,7 @@ badges](/READMEForUsers.md).
 
 ### More Screenshots
 
-<img src="/assets/collate-shots/collated-1.jpg" alt="congratulations screen of TEAM App" width="250" />
-$~~~$
+<img src="/assets/collate-shots/collated-1.jpg" alt="congratulations screen of TEAM App" width="250" /> $~$
 <img src="/assets/collate-shots/collated-2.jpg" alt="congratulations screen of TEAM App" width="250" />
 
 <img src="/assets/collate-shots/collated-3.jpg" alt="congratulations screen of TEAM App" width="250" />
