@@ -140,18 +140,48 @@ badges](/READMEForUsers.md).
 
 ### More Screenshots
 
-<img src="/assets/collate-shots/collated-1.jpg" alt="congratulations screen of TEAM App" width="250" /> $~$
-<img src="/assets/collate-shots/collated-2.jpg" alt="congratulations screen of TEAM App" width="250" />
+<img src="/assets/collate-shots/collated-1.jpg" alt="some collated screens of TEAM App" width="250" /> $~$
+<img src="/assets/collate-shots/collated-2.jpg" alt="some collated screens of TEAM App" width="250" />
 
-<img src="/assets/collate-shots/collated-3.jpg" alt="congratulations screen of TEAM App" width="250" />
+<img src="/assets/collate-shots/collated-3.jpg" alt="some collated screens of TEAM App" width="250" />
+
+<img src="/assets/collate-shots/collated-code-1.png" alt="some collated codebase screens of TEAM App" width="250" />
 
 <br>
 
-## Advanced Features
+## Contributions
 
-### Optional Features
+### Roles
 
-### Configurational Options
+1. Ideation & Strategy
+
+    - Product Owner/Manager: Imaledo David _(me)_
+
+2. Design
+
+    - UI/UX Designer: Imaledo David
+
+3. Development
+
+    - Frontend Developer: Imaledo David
+    - Backend Developer: _[ongoing]_ Imaledo David
+
+4. Testing & Deployment
+
+    - QA Engineer (Quality Assurance): Imaledo David
+    - DevOps Engineer: _[prospective]_ Imaledo David
+
+5. Additional Roles
+    - Content Writer: Imaledo David
+    - Marketing Manager: _[prospective]_ Imaledo David
+
+<br>
+
+## Deployment _[imminent]_
+
+Using **Expo EAS (Expo Application Services) Build**
+
+Expo EAS Build is a tool that helps deploy Expo apps to various platforms, including iOS, Android, and web.
 
 <br>
 
